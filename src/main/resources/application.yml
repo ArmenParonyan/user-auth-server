@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: user.auth.server
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-o3g2iunvcwrt4kzh.us.auth0.com/
+          audiences: https://dev-o3g2iunvcwrt4kzh.us.auth0.com/api/v2/
