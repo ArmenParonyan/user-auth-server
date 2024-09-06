@@ -1,0 +1,31 @@
+openapi: "3.0.0"
+info:
+  title: Spring Boot User Authorization API
+  description: Swagger API for checking user authorization using a bearer token
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+paths:
+  /userAuth:
+    get:
+      summary: Check if user is authorized
+      description: Validates if the user is authorized by sending a Bearer token in the Authorization header.
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Bearer token for authorization. Should be in the format `Bearer <access_token>`.
+          schema:
+            type: string
+            example: "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJSQXRza0g5RzhzRVNIS3FmbDBnOCJ9.eyJpc3MiOiJodHRwczovL2Rldi1vM2cyaXVudmN3cnQ0a3poLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiIyTXN6MEUwVWhzTU1URE4yWWFHWlZFWEdYWnRPaUFhQ0BjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtbzNnMml1bnZjd3J0NGt6aC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTcyNTYzMTg2MywiZXhwIjoxNzI1NzE4MjYzLCJzY29wZSI6InJlYWQ6dXNlcnMgdXBkYXRlOnVzZXJzIGRlbGV0ZTp1c2VycyBjcmVhdGU6dXNlcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJhenAiOiIyTXN6MEUwVWhzTU1URE4yWWFHWlZFWEdYWnRPaUFhQyJ9.QLH4_G6hQ-YkIUuv8p22EsjGraU4-qM-bhAXlPeTCrE2zos7HcjR5byw7c9ww_nQncTP2u3mHMajLXhzmAP_Pwo60UmisZ5QPQ-4EclmXvd8tEhQDRX3FNY5Mz4zgnabCUsGrGMI2iAWqU7vU2FEN1JYgxErk_6mNrd8nz5Gy8Cf-DJ2rSyO-NevGydFmY11TsC86LKeV26T9KUFxbsocjF5hku7wx9wL9QMC0eX0CO9E_Ap8GPGdDrgRyVd6SYHHcXlQ9VfM_g7-O7q3RYiXLlpnLoVFLoT67nnAGfEa4kXXgwxe42SzQiHbc3Zxp-fXdfX-Yp-sJRWsE8lV96uWw"
+      responses:
+        '200':
+          description: Success - User authorized
+          content:
+            application/json:
+              schema:
+                type: string
+                example: 'Success: User authorized'
+        '401':
+          description: Unauthorized - User is not authorized
